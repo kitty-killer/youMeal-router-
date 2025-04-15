@@ -1,0 +1,124 @@
+.wr-basket{
+    margin-top: 75px;
+
+    @media screen and (max-width: 1044px){
+        margin-top: 0;
+    }
+
+    %flex{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .container{
+        width: 300px;
+        padding: 24px 16px;
+        border-radius: 18px;
+        background: rgb(255, 255, 255);
+
+        @media screen and (max-width: 1044px){
+            margin: 0 0 30px 0;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        @media screen and (max-width: 657px) {
+            width: 100%;
+        }
+
+        &::-webkit-scrollbar {
+            width: 7px;
+          }
+        
+        &::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 50%;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 114, 32, 0.322);
+        border-radius: 18px;
+        }
+    }
+
+
+
+    .label{
+        @extend %flex;
+
+        p{
+            color: rgb(0, 0, 0);
+            font-size: clamp(16px, 2vw, 24px);
+            font-weight: 600;
+        }
+
+        .item-count{
+            width: 41px;
+            height: 20px;
+            border-radius: 6px;
+            background: rgb(242, 242, 243);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p{
+                color: rgb(0, 0, 0);
+                font-size: 12px;
+                font-weight: 400;
+            }
+
+        }
+    }
+
+    .summary{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 24px;
+
+        p{
+            color: rgb(0, 0, 0);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 130%;
+        }
+    }
+
+    .checkout-button{
+        width: 268px;
+        height: 40px;
+        border-radius: 12px;
+        background: rgb(255, 112, 32);
+        color: rgb(255, 255, 255);
+        font-size: 16px;
+        font-weight: 400;
+        border: none;
+        margin-bottom: 8px;
+
+        @media screen and (max-width: 657px) {
+            width: 100%;
+        }
+    }
+
+    .delivery-info{
+        display: flex;
+        column-gap: 8px;
+        align-items: center;
+
+        img{
+            width: 24px;
+            height: 24px;
+        }
+        
+        p{
+            color: rgb(0, 0, 0);
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 16px;
+        }
+    }
+
+    .none{
+        display: none;
+    }
+}

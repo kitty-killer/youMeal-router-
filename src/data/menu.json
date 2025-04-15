@@ -1,0 +1,263 @@
+[
+    {
+        "id": "0",
+        "name": "Бургеры",
+        "icon": "/src/assets/icons/burger.png",
+        "items": [
+            {
+                "id": "00",
+                "name": "Гигантский бургер",
+                "img": "/src/assets/menuImgs/burgers/meetBomb.jpg",
+                "weight": "520",
+                "price": "689",
+                "amount": "1",
+                "description": "Огромный бургер с нежнейшей говяжьей котлетой и двойным слоем сыра.",
+                "compos": ["Говяжья котлета", "Бекон", "Сыр Чеддер"],
+                "calories": "850"
+            },
+            {
+                "id": "01",
+                "name": "Сырный рай",
+                "img": "/src/assets/menuImgs/burgers/superCheese.jpg",
+                "weight": "512",
+                "price": "550",
+                "amount": "1",
+                "description": "Три вида сыра и сочная котлета создают уникальный вкус.",
+                "compos": ["Говяжья котлета", "Сыр Чеддер", "Сыр Гауда"],
+                "calories": "780"
+            }
+        ]
+    },
+    {
+        "id": "1",
+        "name": "Закуски",
+        "icon": "/src/assets/icons/snack.png",
+        "items": [
+            {
+                "id": "10",
+                "name": "Хрустящий картофель фри",
+                "img": "/src/assets/menuImgs/snacks/fries.jpg",
+                "weight": "180",
+                "price": "245",
+                "amount": "1",
+                "description": "Золотистые ломтики картофеля, обжаренные до хрустящей корочки.",
+                "compos": ["Картофель", "Масло", "Соль"],
+                "calories": "320"
+            },
+            {
+                "id": "11",
+                "name": "Начос с сыром",
+                "img": "/src/assets/menuImgs/snacks/nachos.jpg",
+                "weight": "200",
+                "price": "250",
+                "amount": "1",
+                "description": "Кукурузные чипсы, покрытые расплавленным сыром и острым перцем.",
+                "compos": ["Кукурузные чипсы", "Сыр", "Халапеньо"],
+                "calories": "480"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "name": "Комбо",
+        "icon": "/src/assets/icons/combo.png",
+        "items": [
+            {
+                "id": "21",
+                "name": "Семейное комбо",
+                "img": "/src/assets/menuImgs/combo/classicCombo.png",
+                "weight": "650",
+                "price": "750",
+                "amount": "1",
+                "description": "Комбо для всей семьи: бургеры, картофель и напитки.",
+                "compos": ["Бургер", "Картофель фри", "Напиток"],
+                "calories": "980"
+            },
+            {
+                "id": "22",
+                "name": "Двойное наслаждение",
+                "img": "/src/assets/menuImgs/combo/duoCombo.png",
+                "weight": "920",
+                "price": "1020",
+                "amount": "1",
+                "description": "Два бургера, большая порция картофеля и напитки.",
+                "compos": ["Два бургера", "Картофель", "Напиток"],
+                "calories": "1600"
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "name": "Шаурма",
+        "icon": "/src/assets/icons/roll.png",
+        "items": [
+            {
+                "id": "30",
+                "name": "Классическая шаурма",
+                "img": "/src/assets/menuImgs/shaurma/beef.jpg",
+                "weight": "350",
+                "price": "320",
+                "amount": "1",
+                "description": "Нежное куриное мясо с овощами и чесночным соусом в лаваше.",
+                "compos": ["Курица", "Лаваш", "Овощи"],
+                "calories": "580"
+            },
+            {
+                "id": "31",
+                "name": "Острая шаурма",
+                "img": "/src/assets/menuImgs/shaurma/cheese.jpg",
+                "weight": "370",
+                "price": "350",
+                "amount": "1",
+                "description": "Пикантная курица с острым соусом и свежими овощами.",
+                "compos": ["Курица", "Лаваш", "Овощи", "Острый соус"],
+                "calories": "620"
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "name": "Пицца",
+        "icon": "/src/assets/icons/pizza.png",
+        "items": [
+            {
+                "id": "40",
+                "name": "Пепперони",
+                "img": "/src/assets/menuImgs/pizza/pepperoni.jpg",
+                "weight": "550",
+                "price": "650",
+                "amount": "1",
+                "description": "Острая колбаса пепперони с двойной порцией сыра.",
+                "compos": ["Тесто", "Пепперони", "Сыр моцарелла"],
+                "calories": "980"
+            },
+            {
+                "id": "41",
+                "name": "Маргарита",
+                "img": "/src/assets/menuImgs/pizza/margarita.jpg",
+                "weight": "500",
+                "price": "550",
+                "amount": "1",
+                "description": "Тонкое тесто с сочными помидорами и нежной моцареллой.",
+                "compos": ["Тесто", "Помидоры", "Сыр моцарелла"],
+                "calories": "820"
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "name": "Вок",
+        "icon": "/src/assets/icons/wok.png",
+        "items": [
+            {
+                "id": "50",
+                "name": "Лапша с курицей",
+                "img": "/src/assets/menuImgs/wok/chicken.jpg",
+                "weight": "400",
+                "price": "450",
+                "amount": "1",
+                "description": "Ароматная лапша с нежными кусочками курицы и овощами.",
+                "compos": ["Лапша", "Курица", "Овощи"],
+                "calories": "620"
+            },
+            {
+                "id": "51",
+                "name": "Овощной вок",
+                "img": "/src/assets/menuImgs/wok/beef.jpg",
+                "weight": "380",
+                "price": "400",
+                "amount": "1",
+                "description": "Легкое блюдо с обжаренными овощами и лапшой.",
+                "compos": ["Лапша", "Овощи"],
+                "calories": "480"
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "name": "Десерты",
+        "icon": "/src/assets/icons/desserts.png",
+        "items": [
+            {
+                "id": "60",
+                "name": "Чизкейк",
+                "img": "/src/assets/menuImgs/desserts/cheesecake.jpg",
+                "weight": "150",
+                "price": "350",
+                "amount": "1",
+                "description": "Нежнейший десерт с ванильно-сливочным вкусом.",
+                "compos": ["Творожный сыр", "Сливки"],
+                "calories": "420"
+            },
+            {
+                "id": "61",
+                "name": "Шоколадный торт",
+                "img": "/src/assets/menuImgs/desserts/chocolateCake.png",
+                "weight": "180",
+                "price": "320",
+                "amount": "1",
+                "description": "Нежные бисквитные коржи с насыщенным шоколадным кремом.",
+                "compos": ["Бисквит", "Шоколадный крем"],
+                "calories": "580"
+            }
+        ]
+    },
+    {
+        "id": "7",
+        "name": "Соусы",
+        "icon": "/src/assets/icons/sauce.png",
+        "items": [
+            {
+                "id": "70",
+                "name": "Кетчуп",
+                "img": "/src/assets/menuImgs/sauces/ketchup.jpg",
+                "weight": "50",
+                "price": "50",
+                "amount": "1",
+                "description": "Классический томатный кетчуп с идеальным балансом.",
+                "compos": ["Томаты", "Сахар"],
+                "calories": "120"
+            },
+            {
+                "id": "71",
+                "name": "Майонез",
+                "img": "/src/assets/menuImgs/sauces/garlic.jpg",
+                "weight": "50",
+                "price": "50",
+                "amount": "1",
+                "description": "Нежный сливочный соус с легкой кислинкой.",
+                "compos": ["Яичный желток", "Масло"],
+                "calories": "380"
+            }
+        ]
+    },
+    {
+        "id": "8",
+        "name": "Хот-доги",
+        "icon": "/src/assets/icons/hotdog.png",
+        "items": [
+            {
+                "id": "80",
+                "name": "Классический хот-дог",
+                "img": "/src/assets/menuImgs/hotdogs/classic.jpg",
+                "weight": "250",
+                "price": "280",
+                "amount": "1",
+                "description": "Традиционный хот-дог с сочной сосиской и свежими овощами.",
+                "compos": ["Сосиска", "Булочка", "Горчица"],
+                "calories": "420"
+            },
+            {
+                "id": "81",
+                "name": "Чикен хот-дог",
+                "img": "/src/assets/menuImgs/hotdogs/chicken.jpg",
+                "weight": "270",
+                "price": "320",
+                "amount": "1",
+                "description": "Нежная куриная сосиска с сыром и овощами.",
+                "compos": ["Куриная сосиска", "Булочка"],
+                "calories": "480"
+            }
+        ]
+    }
+]
