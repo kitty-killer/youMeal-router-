@@ -1,25 +1,26 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import './login.scss';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const auth = getAuth();
 
     const handleLogin = (e) => {
         e.preventDefault();
-        const userData = JSON.parse(localStorage.getItem('userData'));
 
-        if (userData && userData.email === email && userData.password === password) {
-            setError('');
-            localStorage.setItem('isAuthenticated', 'true');
-
-            navigate('/main');
-        } else {
-            setError('Invalid email or password!');
-        }
+        signInWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                setError('');
+                navigate('/');
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
     };
 
     return (

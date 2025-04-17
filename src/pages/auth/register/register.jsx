@@ -1,13 +1,16 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router';
 import './register.scss';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'; // Импортируем Firebase Auth
 
 export default function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
     const navigate = useNavigate();
+    const auth = getAuth();
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -17,10 +20,20 @@ export default function Register() {
             return;
         }
 
-        const userData = { email, password };
-        localStorage.setItem('userData', JSON.stringify(userData));
-        setError('');
-        navigate('/');
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                setSuccessMessage('Registration successful! Redirecting to Login...');
+                setError('');
+
+
+                setTimeout(() => {
+                    navigate('/login');
+                }, 2000);
+            })
+            .catch((error) => {
+                setError(error.message);
+                setSuccessMessage('');
+            });
     };
 
     return (
@@ -48,7 +61,10 @@ export default function Register() {
                 <button type="submit">Register</button>
             </form>
 
-            <Link to="/">Login</Link>
+            {error && <p className="error-message">{error}</p>}
+            {successMessage && <p className="success-message">{successMessage}</p>}
+
+            <Link to="/login">Login</Link>
         </div>
     );
 }

@@ -5,6 +5,7 @@ import Product from "./product/product.jsx";
 import Modal from "./modal/modal.jsx";
 import menuBase from "../../data/menu.json";
 import { useState } from "react";
+import { getAuth, signOut } from "firebase/auth";
 
 export default function Main() {
     const [basket, setBasket] = useState([]);
@@ -23,8 +24,12 @@ export default function Main() {
 
     // Логика выхода
     const handleLogout = () => {
-        localStorage.removeItem("isAuthenticated"); // Удаляем флаг авторизации
-        window.location.href = "/"; // Перенаправление на страницу входа
+        const auth = getAuth();
+        signOut(auth).then(() => {
+            window.location.href = "/login";
+        }).catch((error) => {
+            console.error("Ошибка выхода:", error.message);
+        });
     };
 
     return (
@@ -68,21 +73,7 @@ export default function Main() {
                 </div>
             </div>
             {/* Кнопка выхода */}
-            <button
-                onClick={handleLogout}
-                style={{
-                    position: "fixed",
-                    bottom: "20px",
-                    right: "20px",
-                    padding: "10px 20px",
-                    backgroundColor: "#ff4d4f",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                    fontSize: "16px",
-                }}
-            >
+            <button className="close-button" onClick={handleLogout}>
                 Logout
             </button>
         </div>
