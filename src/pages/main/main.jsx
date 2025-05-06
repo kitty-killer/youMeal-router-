@@ -1,11 +1,12 @@
 import "./main.scss";
-import Navigation from "./navigation/navigation.jsx";
-import Basket from "./basket/basket.jsx";
-import Product from "./product/product.jsx";
-import Modal from "./modal/modal.jsx";
+import Navigation from "../../components/main/navigation/navigation.jsx";
+import Basket from "../../components/main/basket/basket.jsx";
+import Product from "../../components/main/product/product.jsx";
+import Modal from "../../components/main/modal/modal.jsx";
 import menuBase from "../../data/menu.json";
 import { useState } from "react";
 import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "react-router";
 
 export default function Main() {
     const [basket, setBasket] = useState([]);
@@ -14,6 +15,7 @@ export default function Main() {
     const [isOpen, setIsOpen] = useState(false);
     const [categoryId, setCategoryId] = useState(null);
     const [item, setItem] = useState(null);
+    const navigate = useNavigate();
 
     const stateBasket = { basket, setBasket };
     const stateMenu = { menu, setMenu };
@@ -26,10 +28,14 @@ export default function Main() {
     const handleLogout = () => {
         const auth = getAuth();
         signOut(auth).then(() => {
-            window.location.href = "/login";
+            navigate("/login");
         }).catch((error) => {
             console.error("Ошибка выхода:", error.message);
         });
+    };
+
+    const handleProfileClick = () => {
+        navigate("/profile");
     };
 
     return (
@@ -72,7 +78,11 @@ export default function Main() {
                     />
                 </div>
             </div>
-            {/* Кнопка выхода */}
+
+            <button className="profile-button" onClick={handleProfileClick}>
+                Перейти в профиль
+            </button>
+
             <button className="close-button" onClick={handleLogout}>
                 Logout
             </button>

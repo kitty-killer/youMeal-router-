@@ -2,8 +2,13 @@ import logo from "../../assets/logo/logo.png"
 import burgerMain from "../../assets/logo/burgerMain.png"
 
 import "./header.scss"
+import {useNavigate} from "react-router";
 
 export default function Header(){
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate("/");
+    };
     return(
         <div className="wr-header">
             <div className="container">
@@ -24,10 +29,11 @@ export default function Header(){
 
                         <div className="bottom">
                             <p>Бесплатная доставка от 599₽</p>
-                            <button>Добавить</button>
+                            <button onClick={handleClick}>Добавить</button>
 
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

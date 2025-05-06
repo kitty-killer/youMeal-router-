@@ -1,70 +1,101 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router';
+import { useNavigate, Link } from 'react-router-dom';
 import './register.scss';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'; // Импортируем Firebase Auth
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [error, setError] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
     const navigate = useNavigate();
     const auth = getAuth();
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
 
         if (password !== confirmPassword) {
-            setError('Passwords do not match!');
+            toast.error('Пароли не совпадают!');
             return;
         }
 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(() => {
-                setSuccessMessage('Registration successful! Redirecting to Login...');
-                setError('');
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
 
 
-                setTimeout(() => {
-                    navigate('/login');
-                }, 2000);
-            })
-            .catch((error) => {
-                setError(error.message);
-                setSuccessMessage('');
+            const initialProfile = {
+                email: user.email,
+                fullName: "",
+                phone: "",
+                address: "",
+                city: "",
+                postalCode: "",
+                birthDate: "",
+                deliveryPreference: "",
+                notes: "",
+                avatar: null
+            };
+
+            localStorage.setItem(`userProfile_${user.uid}`, JSON.stringify(initialProfile));
+
+            toast.success('Регистрация успешна! Заполните профиль', {
+                autoClose: 2000,
+                onClose: () => navigate('/profile')
             });
+
+        } catch (error) {
+            let errorMessage = 'Ошибка регистрации';
+            switch(error.code) {
+                case 'auth/email-already-in-use':
+                    errorMessage = 'Этот email уже используется';
+                    break;
+                case 'auth/invalid-email':
+                    errorMessage = 'Некорректный email';
+                    break;
+                case 'auth/weak-password':
+                    errorMessage = 'Пароль должен содержать минимум 6 символов';
+                    break;
+                default:
+                    errorMessage = error.message;
+            }
+            toast.error(errorMessage);
+        }
     };
 
     return (
         <div className="register-container">
-            <h1>Register</h1>
+            <h1>Регистрация</h1>
             <form onSubmit={handleRegister}>
                 <input
                     type="email"
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                 />
                 <input
                     type="password"
-                    placeholder="Password"
+                    placeholder="Пароль"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
+                    minLength="6"
                 />
                 <input
                     type="password"
-                    placeholder="Confirm Password"
+                    placeholder="Подтвердите пароль"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
                 />
-                <button type="submit">Register</button>
+                <button type="submit">Зарегистрироваться</button>
             </form>
 
-            {error && <p className="error-message">{error}</p>}
-            {successMessage && <p className="success-message">{successMessage}</p>}
-
-            <Link to="/login">Login</Link>
+            <p className="login-link">
+                Уже есть аккаунт? <Link to="/login">Войти</Link>
+            </p>
         </div>
     );
 }

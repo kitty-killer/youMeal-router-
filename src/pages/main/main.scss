@@ -71,3 +71,21 @@
     font-size:16px;
 
 }
+.profile-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+    font-size: 16px;
+    transition: background 0.3s;
+
+    &:hover {
+        background-color: #ff8c00;
+    }
+}
