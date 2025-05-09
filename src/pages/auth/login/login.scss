@@ -1,7 +1,7 @@
 .auth-container {
   max-width: 400px;
   margin: 50px auto;
-  background: linear-gradient(135deg, #fff7e6, #ffe0b3); // Мягкие желтые градиенты
+  background: linear-gradient(135deg, #fff7e6, #ffe0b3);
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -23,14 +23,14 @@
       width: 100%;
       height: 40px;
       padding: 0 12px;
-      border: 1px solid #ffcd80; // Легкий желтый
+      border: 1px solid #ffcd80;
       border-radius: 8px;
       font-size: 16px;
       transition: 0.2s;
 
       &:focus {
         outline: none;
-        border-color: #ffab08; // Насыщенный желтый для активного поля
+        border-color: #ffab08;
         box-shadow: 0 0 4px #ffab08;
       }
     }
@@ -48,24 +48,27 @@
       transition: 0.2s;
 
       &:hover {
-        background: #e69907; // Тёмный оттенок желтого при наведении
+        background: #e69907;
         transform: scale(1.02);
       }
     }
   }
 
-  a {
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 14px;
-    color: #ffab08;
-    text-decoration: none;
-    transition: 0.2s;
-    margin-right: 15px;
+  .links {
+    margin-top: 15px;
 
-    &:hover {
-      color: #e69907; // Темный оттенок при наведении
-      text-decoration: underline;
+    a {
+      display: inline-block;
+      font-size: 14px;
+      color: #ffab08;
+      text-decoration: none;
+      margin-right: 15px;
+      transition: 0.2s;
+
+      &:hover {
+        color: #e69907;
+        text-decoration: underline;
+      }
     }
   }
 }

@@ -16,14 +16,16 @@ export default function Register() {
         e.preventDefault();
 
         if (password !== confirmPassword) {
-            toast.error('Пароли не совпадают!');
+            toast.error('Пароли не совпадают!', {
+                autoClose: 4000,
+                position: 'top-center',
+            });
             return;
         }
 
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-
 
             const initialProfile = {
                 email: user.email,
@@ -42,25 +44,31 @@ export default function Register() {
 
             toast.success('Регистрация успешна! Заполните профиль', {
                 autoClose: 2000,
+                position: 'top-center',
                 onClose: () => navigate('/profile')
             });
 
         } catch (error) {
-            let errorMessage = 'Ошибка регистрации';
-            switch(error.code) {
+            let errorMessage = 'Ошибка регистрации. Попробуйте снова.';
+
+            switch (error.code) {
                 case 'auth/email-already-in-use':
-                    errorMessage = 'Этот email уже используется';
+                    errorMessage = 'Этот email уже используется.';
                     break;
                 case 'auth/invalid-email':
-                    errorMessage = 'Некорректный email';
+                    errorMessage = 'Некорректный email.';
                     break;
                 case 'auth/weak-password':
-                    errorMessage = 'Пароль должен содержать минимум 6 символов';
+                    errorMessage = 'Пароль должен содержать минимум 6 символов.';
                     break;
                 default:
-                    errorMessage = error.message;
+                    errorMessage = 'Не удалось зарегистрироваться. Повторите попытку.';
             }
-            toast.error(errorMessage);
+
+            toast.error(errorMessage, {
+                autoClose: 5000,
+                position: 'top-center',
+            });
         }
     };
 
